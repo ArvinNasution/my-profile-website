@@ -80,14 +80,14 @@
         .tabs {
             position: relative;
             display: flex;
-            gap: 10px;
-            padding: 20px;
+            gap: 8px;
+            padding: 12px;
             background: rgba(255, 255, 255, 0.1);
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .tab-btn {
-            padding: 10px 20px;
+            padding: 8px 16px;
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 5px;
@@ -95,6 +95,7 @@
             cursor: pointer;
             transition: 0.3s;
             font-weight: 500;
+            font-size: 0.9rem;
         }
 
         .tab-btn:hover {
@@ -146,6 +147,8 @@
             width: 100%;
             border-radius: 8px;
             margin-top: 10px;
+            height: 200px;
+            object-fit: cover;
         }
 
         .achievement {
@@ -190,18 +193,21 @@
 
         .profile {
             display: flex;
-            gap: 20px;
+            flex-direction: column;
             align-items: center;
+            text-align: center;
             margin-bottom: 20px;
+            gap: 15px;
         }
 
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             overflow: hidden;
             border: 2px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
         }
 
         .profile-img img {
@@ -228,6 +234,70 @@
         .ban-achievement h4 {
             color: #FF4444;
         }
+
+        /* Responsive styles */
+        @media screen and (min-width: 768px) {
+            .profile {
+                flex-direction: row;
+                text-align: left;
+            }
+
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .tab-btn {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+
+            .tabs {
+                padding: 15px;
+                gap: 10px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+            .card {
+                width: 95%;
+            }
+
+            .content {
+                padding: 15px;
+            }
+
+            .profile-img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .tab-btn {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+
+            .tabs {
+                padding: 10px;
+                gap: 6px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -247,7 +317,6 @@
                 <div id="profile" class="tab-content active">
                     <div class="profile">
                         <div class="profile-img">
-                            <!-- Ganti URL di bawah ini dengan URL foto profil Anda -->
                             <img src="https://i.imgur.com/zV2sv3o.gif" alt="Profile">
                         </div>
                         <div class="profile-info">
@@ -281,7 +350,6 @@
                             <p>Account Status: Banned</p>
                         </div>
                         <div class="game-details">
-                            <!-- Ganti URL di bawah ini dengan screenshot ban ML Anda -->
                             <img src="/api/placeholder/400/200" alt="ML Ban">
                             <p>Ban Reason: Third Party Tools</p>
                             <p>Date: October 15, 2023</p>
@@ -297,7 +365,6 @@
                             <p>Account Status: Banned</p>
                         </div>
                         <div class="game-details">
-                            <!-- Ganti URL di bawah ini dengan screenshot ban PUBG Anda -->
                             <img src="/api/placeholder/400/200" alt="PUBG Ban">
                             <p>Ban Reason: Unusual Gameplay Pattern</p>
                             <p>Date: December 3, 2023</p>
@@ -316,7 +383,6 @@
                             <p>Status: Completed</p>
                         </div>
                         <div class="anime-details">
-                            <!-- Ganti URL dengan gambar anime -->
                             <img src="/api/placeholder/400/200" alt="AOT">
                             <p>Rating: ⭐⭐⭐⭐⭐</p>
                             <p>Episodes Watched: 87/87</p>
@@ -328,7 +394,6 @@
                             <p>Status: Watching</p>
                         </div>
                         <div class="anime-details">
-                            <!-- Ganti URL dengan gambar anime -->
                             <img src="/api/placeholder/400/200" alt="Demon Slayer">
                             <p>Rating: ⭐⭐⭐⭐½</p>
                             <p>Episodes Watched: 35/44</p>
@@ -340,7 +405,6 @@
                             <p>Status: Watching</p>
                         </div>
                         <div class="anime-details">
-                            <!-- Ganti URL dengan gambar anime -->
                             <img src="/api/placeholder/400/200" alt="JJK">
                             <p>Rating: ⭐⭐⭐⭐⭐</p>
                             <p>Episodes Watched: 23/23 (Season 1)</p>

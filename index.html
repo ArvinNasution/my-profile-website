@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gaming Profile</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -14,8 +16,40 @@
 
         body {
             min-height: 100vh;
-            background: linear-gradient(45deg, #8460ed, #ff1252);
+            background: linear-gradient(125deg, #00008B, #800080);
+            position: relative;
+            overflow-x: hidden;
         }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                rgba(255,255,255,0.1) 0%,
+                rgba(255,255,255,0.1) 5%,
+                transparent 5%,
+                transparent 80%
+            );
+            transform: rotate(25deg);
+            pointer-events: none;
+        }
+
+        .light {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+
+        .light:nth-child(1) { top: 10%; left: 20%; }
+        .light:nth-child(2) { bottom: 20%; right: 15%; }
+        .light:nth-child(3) { top: 40%; right: 30%; }
 
         .container {
             position: relative;
@@ -25,17 +59,39 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            z-index: 1;
         }
 
         .card {
             position: relative;
-            width: 800px;
+            width: 90%;
+            max-width: 800px;
             min-height: 600px;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            border-radius: 15px;
-            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 25px 45px rgba(0, 0, 0, 0.2),
+                inset 0 0 30px rgba(255, 255, 255, 0.1);
             overflow: hidden;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            transform: skewX(-15deg);
+            pointer-events: none;
         }
 
         .tabs {
@@ -43,30 +99,84 @@
             display: flex;
             gap: 10px;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .tab-btn {
             padding: 10px 20px;
             background: rgba(255, 255, 255, 0.1);
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 5px;
             color: white;
             cursor: pointer;
             transition: 0.3s;
+            font-weight: 500;
         }
 
         .tab-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
 
         .tab-btn.active {
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.4);
         }
 
         .content {
             padding: 20px;
             color: white;
+        }
+
+        .game-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .game-info {
+            transition: all 0.3s ease;
+        }
+
+        .game-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .game-details img {
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        @media (hover: hover) {
+            .game-card:hover .game-details {
+                max-height: 500px;
+                margin-top: 15px;
+            }
+
+            .game-card:hover {
+                background: rgba(255, 255, 255, 0.15);
+                transform: translateY(-5px);
+            }
+        }
+
+        @media (hover: none) {
+            .game-card.active .game-details {
+                max-height: 500px;
+                margin-top: 15px;
+            }
+
+            .game-card.active {
+                background: rgba(255, 255, 255, 0.15);
+            }
         }
 
         .profile {
@@ -81,7 +191,8 @@
             height: 150px;
             border-radius: 50%;
             overflow: hidden;
-            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
         }
 
         .profile-img img {
@@ -89,34 +200,13 @@
             height: 100%;
             object-fit: cover;
         }
-
-        .game-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .game-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 10px;
-        }
-
-        .anime-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .anime-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
+    <div class="light"></div>
+    <div class="light"></div>
+    <div class="light"></div>
+
     <div class="container">
         <div class="card">
             <div class="tabs">
@@ -136,33 +226,36 @@
                             <p>Gamer | Anime Enthusiast</p>
                         </div>
                     </div>
-                    <p>A passionate gamer with experience across multiple platforms and genres. Unfortunately, some accounts were banned but each experience taught valuable lessons.</p>
+                    <p>A passionate gamer with experience across multiple platforms and genres.</p>
                 </div>
 
                 <div id="games" class="tab-content" style="display: none">
-                    <div class="game-list">
-                        <div class="game-card">
+                    <div class="game-card">
+                        <div class="game-info">
                             <h3>Mobile Legends</h3>
                             <p>Account Status: Banned</p>
-                            <p>Reason: [Will be filled with your details]</p>
                         </div>
-                        <div class="game-card">
-                            <h3>PUBG</h3>
+                        <div class="game-details">
+                            <img src="/api/placeholder/400/200" alt="ML Ban">
+                            <p>Ban Reason: [Your ban reason]</p>
+                            <p>Date: [Ban date]</p>
+                        </div>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-info">
+                            <h3>PUBG Mobile</h3>
                             <p>Account Status: Banned</p>
-                            <p>Reason: [Will be filled with your details]</p>
                         </div>
-                        <!-- More game cards -->
+                        <div class="game-details">
+                            <img src="/api/placeholder/400/200" alt="PUBG Ban">
+                            <p>Ban Reason: [Your ban reason]</p>
+                            <p>Date: [Ban date]</p>
+                        </div>
                     </div>
                 </div>
 
                 <div id="anime" class="tab-content" style="display: none">
-                    <div class="anime-list">
-                        <div class="anime-card">
-                            <h3>Oreimo</h3>
-                            <p>Status: Completed</p>
-                        </div>
-                        <!-- More anime cards -->
-                    </div>
+                    <!-- Anime content here -->
                 </div>
             </div>
         </div>
@@ -170,16 +263,13 @@
 
     <script>
         function showTab(tabName) {
-            // Hide all tab content
             const tabContents = document.getElementsByClassName('tab-content');
             for(let content of tabContents) {
                 content.style.display = 'none';
             }
             
-            // Show selected tab content
             document.getElementById(tabName).style.display = 'block';
             
-            // Update active tab button
             const tabBtns = document.getElementsByClassName('tab-btn');
             for(let btn of tabBtns) {
                 btn.classList.remove('active');
@@ -188,6 +278,15 @@
                 }
             }
         }
+
+        // Handle mobile touch
+        document.querySelectorAll('.game-card').forEach(card => {
+            card.addEventListener('click', () => {
+                if (window.matchMedia('(hover: none)').matches) {
+                    card.classList.toggle('active');
+                }
+            });
+        });
     </script>
 </body>
 </html>

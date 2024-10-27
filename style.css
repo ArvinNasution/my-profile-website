@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(125deg, #00008B, #800080);
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        rgba(255,255,255,0.1) 0%,
+        rgba(255,255,255,0.1) 5%,
+        transparent 5%,
+        transparent 80%
+    );
+    transform: rotate(25deg);
+    pointer-events: none;
+}
+
+.light {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    filter: blur(60px);
+}
+
+.light:nth-child(1) { top: 10%; left: 20%; }
+.light:nth-child(2) { bottom: 20%; right: 15%; }
+.light:nth-child(3) { top: 40%; right: 30%; }
+
+.container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 1;
+}
+
+.card {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    min-height: 600px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 25px 45px rgba(0, 0, 0, 0.2),
+        inset 0 0 30px rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+/* Tab Styles */
+.tabs {
+    position: relative;
+    display: flex;
+    gap: 8px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tab-btn {
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.tab-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.tab-btn.active {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Content Styles */
+.content {
+    padding: 20px;
+    color: white;
+    max-height: 700px;
+    overflow-y: auto;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Card Styles */
+.game-card, .anime-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.game-info, .anime-info {
+    transition: all 0.3s ease;
+}
+
+.game-details, .anime-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.game-details img, .anime-details img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Achievement Styles */
+.achievement {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.achievement h4 {
+    color: #FFD700;
+    margin-bottom: 5px;
+}
+
+/* Profile Styles */
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+.profile-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.achievements-section {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.ban-achievement {
+    background: rgba(255, 0, 0, 0.15);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+.ban-achievement h4 {
+    color: #FF4444;
+}
+
+/* Hover Effects */
+@media (hover: hover) {
+    .game-card:hover .game-details,
+    .anime-card:hover .anime-details {
+        max-height: 500px;
+        margin-top: 15px;
+    }
+
+    .game-card:hover,
+    .anime-card:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-5px);
+    }
+}
+
+@media (hover: none) {
+    .game-card.active .game-details,
+    .anime-card.active .anime-details {
+        max-height: 500px;
+        margin-top: 15px;
+    }
+
+    .game-card.active,
+    .anime-card.active {
+        background: rgba(255, 255, 255, 0.15);
+    }
+}
+
+/* Responsive Styles */
+@media screen and (min-width: 768px) {
+    .profile {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .profile-img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .tab-btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .tabs {
+        padding: 15px;
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    .card {
+        width: 95%;
+    }
+
+    .content {
+        padding: 15px;
+    }
+
+    .profile-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .tab-btn {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+
+    .tabs {
+        padding: 10px;
+        gap: 6px;
+    }
+
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.2rem; }
+    p { font-size: 0.9rem; }
+}

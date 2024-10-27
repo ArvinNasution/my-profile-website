@@ -129,6 +129,14 @@
             color: white;
         }
 
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
         .game-card {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -216,20 +224,20 @@
             </div>
             
             <div class="content">
-                <div id="profile" class="tab-content">
+                <div id="profile" class="tab-content active">
                     <div class="profile">
                         <div class="profile-img">
                             <img src="/api/placeholder/150/150" alt="Profile">
                         </div>
                         <div class="profile-info">
-                            <h2>Your Name</h2>
+                            <h2>Zhavin Project</h2>
                             <p>Gamer | Anime Enthusiast</p>
                         </div>
                     </div>
                     <p>A passionate gamer with experience across multiple platforms and genres.</p>
                 </div>
 
-                <div id="games" class="tab-content" style="display: none">
+                <div id="games" class="tab-content">
                     <div class="game-card">
                         <div class="game-info">
                             <h3>Mobile Legends</h3>
@@ -254,7 +262,7 @@
                     </div>
                 </div>
 
-                <div id="anime" class="tab-content" style="display: none">
+                <div id="anime" class="tab-content">
                     <!-- Anime content here -->
                 </div>
             </div>
@@ -263,13 +271,16 @@
 
     <script>
         function showTab(tabName) {
+            // Hide all tab contents
             const tabContents = document.getElementsByClassName('tab-content');
             for(let content of tabContents) {
-                content.style.display = 'none';
+                content.classList.remove('active');
             }
             
-            document.getElementById(tabName).style.display = 'block';
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
             
+            // Update active state of tab buttons
             const tabBtns = document.getElementsByClassName('tab-btn');
             for(let btn of tabBtns) {
                 btn.classList.remove('active');

@@ -66,7 +66,7 @@
             position: relative;
             width: 90%;
             max-width: 800px;
-            min-height: 600px;
+            height: 80vh; /* Tambahkan height */
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 20px;
@@ -75,15 +75,20 @@
                 0 25px 45px rgba(0, 0, 0, 0.2),
                 inset 0 0 30px rgba(255, 255, 255, 0.1);
             overflow: hidden;
+            display: flex; /* Tambahkan display flex */
+            flex-direction: column; /* Tambahkan flex direction */
         }
 
         .tabs {
-            position: relative;
-            display: flex;
-            gap: 8px;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            /* style lainnya tetap sama */
+        }
+
+        .content {
+            flex: 1; /* Tambahkan flex grow */
+            /* style lainnya tetap sama */
         }
 
         .tab-btn {
@@ -111,8 +116,24 @@
         .content {
             padding: 20px;
             color: white;
-            max-height: 700px;
+            max-height: 70vh; /* Ubah max-height menjadi 70vh */
             overflow-y: auto;
+            scrollbar-width: thin; /* Untuk Firefox */
+            scrollbar-color: rgba(255, 255, 255, 0.3) transparent; /* Untuk Firefox */
+        }
+
+            /* Tambahkan style untuk scrollbar di Chrome/Safari */
+        .content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .content::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
         }
 
         .tab-content {
@@ -188,6 +209,17 @@
             .game-card.active,
             .anime-card.active {
                 background: rgba(255, 255, 255, 0.15);
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .card {
+                height: 85vh;
+                width: 95%;
+            }
+            
+            .content {
+                max-height: calc(85vh - 60px); /* Sesuaikan dengan tinggi tabs */
             }
         }
 

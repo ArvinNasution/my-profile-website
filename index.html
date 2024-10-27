@@ -77,23 +77,6 @@
             overflow: hidden;
         }
 
-        .card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -50%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.1),
-                transparent
-            );
-            transform: skewX(-15deg);
-            pointer-events: none;
-        }
-
         .tabs {
             position: relative;
             display: flex;
@@ -127,6 +110,8 @@
         .content {
             padding: 20px;
             color: white;
+            max-height: 700px;
+            overflow-y: auto;
         }
 
         .tab-content {
@@ -137,7 +122,7 @@
             display: block;
         }
 
-        .game-card {
+        .game-card, .anime-card {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 15px;
@@ -145,44 +130,60 @@
             margin-bottom: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
-            overflow: hidden;
         }
 
-        .game-info {
+        .game-info, .anime-info {
             transition: all 0.3s ease;
         }
 
-        .game-details {
+        .game-details, .anime-details {
             max-height: 0;
             overflow: hidden;
             transition: all 0.3s ease;
         }
 
-        .game-details img {
+        .game-details img, .anime-details img {
             width: 100%;
             border-radius: 8px;
             margin-top: 10px;
         }
 
+        .achievement {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .achievement h4 {
+            color: #FFD700;
+            margin-bottom: 5px;
+        }
+
         @media (hover: hover) {
-            .game-card:hover .game-details {
+            .game-card:hover .game-details,
+            .anime-card:hover .anime-details {
                 max-height: 500px;
                 margin-top: 15px;
             }
 
-            .game-card:hover {
+            .game-card:hover,
+            .anime-card:hover {
                 background: rgba(255, 255, 255, 0.15);
                 transform: translateY(-5px);
             }
         }
 
         @media (hover: none) {
-            .game-card.active .game-details {
+            .game-card.active .game-details,
+            .anime-card.active .anime-details {
                 max-height: 500px;
                 margin-top: 15px;
             }
 
-            .game-card.active {
+            .game-card.active,
+            .anime-card.active {
                 background: rgba(255, 255, 255, 0.15);
             }
         }
@@ -208,6 +209,25 @@
             height: 100%;
             object-fit: cover;
         }
+
+        .achievements-section {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .ban-achievement {
+            background: rgba(255, 0, 0, 0.15);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+
+        .ban-achievement h4 {
+            color: #FF4444;
+        }
     </style>
 </head>
 <body>
@@ -227,6 +247,7 @@
                 <div id="profile" class="tab-content active">
                     <div class="profile">
                         <div class="profile-img">
+                            <!-- Ganti URL di bawah ini dengan URL foto profil Anda -->
                             <img src="/api/placeholder/150/150" alt="Profile">
                         </div>
                         <div class="profile-info">
@@ -235,6 +256,22 @@
                         </div>
                     </div>
                     <p>A passionate gamer with experience across multiple platforms and genres.</p>
+                    
+                    <div class="achievements-section">
+                        <h3>🏆 Ban Achievements</h3>
+                        <div class="ban-achievement">
+                            <h4>Serial Banned Player</h4>
+                            <p>Successfully got banned in multiple popular games</p>
+                        </div>
+                        <div class="ban-achievement">
+                            <h4>Speed Runner</h4>
+                            <p>Got banned within 24 hours of creating new account</p>
+                        </div>
+                        <div class="ban-achievement">
+                            <h4>Multi-Platform Master</h4>
+                            <p>Achieved bans across different gaming platforms</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="games" class="tab-content">
@@ -244,9 +281,14 @@
                             <p>Account Status: Banned</p>
                         </div>
                         <div class="game-details">
+                            <!-- Ganti URL di bawah ini dengan screenshot ban ML Anda -->
                             <img src="/api/placeholder/400/200" alt="ML Ban">
-                            <p>Ban Reason: [Your ban reason]</p>
-                            <p>Date: [Ban date]</p>
+                            <p>Ban Reason: Third Party Tools</p>
+                            <p>Date: October 15, 2023</p>
+                            <div class="achievement">
+                                <h4>🏆 Mythical Glory Before Ban</h4>
+                                <p>Reached top rank before getting banned</p>
+                            </div>
                         </div>
                     </div>
                     <div class="game-card">
@@ -255,15 +297,55 @@
                             <p>Account Status: Banned</p>
                         </div>
                         <div class="game-details">
+                            <!-- Ganti URL di bawah ini dengan screenshot ban PUBG Anda -->
                             <img src="/api/placeholder/400/200" alt="PUBG Ban">
-                            <p>Ban Reason: [Your ban reason]</p>
-                            <p>Date: [Ban date]</p>
+                            <p>Ban Reason: Unusual Gameplay Pattern</p>
+                            <p>Date: December 3, 2023</p>
+                            <div class="achievement">
+                                <h4>🏆 Conqueror Achievement</h4>
+                                <p>Reached Conqueror rank in record time</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div id="anime" class="tab-content">
-                    <!-- Anime content here -->
+                    <div class="anime-card">
+                        <div class="anime-info">
+                            <h3>Attack on Titan</h3>
+                            <p>Status: Completed</p>
+                        </div>
+                        <div class="anime-details">
+                            <!-- Ganti URL dengan gambar anime -->
+                            <img src="/api/placeholder/400/200" alt="AOT">
+                            <p>Rating: ⭐⭐⭐⭐⭐</p>
+                            <p>Episodes Watched: 87/87</p>
+                        </div>
+                    </div>
+                    <div class="anime-card">
+                        <div class="anime-info">
+                            <h3>Demon Slayer</h3>
+                            <p>Status: Watching</p>
+                        </div>
+                        <div class="anime-details">
+                            <!-- Ganti URL dengan gambar anime -->
+                            <img src="/api/placeholder/400/200" alt="Demon Slayer">
+                            <p>Rating: ⭐⭐⭐⭐½</p>
+                            <p>Episodes Watched: 35/44</p>
+                        </div>
+                    </div>
+                    <div class="anime-card">
+                        <div class="anime-info">
+                            <h3>Jujutsu Kaisen</h3>
+                            <p>Status: Watching</p>
+                        </div>
+                        <div class="anime-details">
+                            <!-- Ganti URL dengan gambar anime -->
+                            <img src="/api/placeholder/400/200" alt="JJK">
+                            <p>Rating: ⭐⭐⭐⭐⭐</p>
+                            <p>Episodes Watched: 23/23 (Season 1)</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -271,16 +353,13 @@
 
     <script>
         function showTab(tabName) {
-            // Hide all tab contents
             const tabContents = document.getElementsByClassName('tab-content');
             for(let content of tabContents) {
                 content.classList.remove('active');
             }
             
-            // Show selected tab content
             document.getElementById(tabName).classList.add('active');
             
-            // Update active state of tab buttons
             const tabBtns = document.getElementsByClassName('tab-btn');
             for(let btn of tabBtns) {
                 btn.classList.remove('active');
@@ -290,8 +369,7 @@
             }
         }
 
-        // Handle mobile touch
-        document.querySelectorAll('.game-card').forEach(card => {
+        document.querySelectorAll('.game-card, .anime-card').forEach(card => {
             card.addEventListener('click', () => {
                 if (window.matchMedia('(hover: none)').matches) {
                     card.classList.toggle('active');

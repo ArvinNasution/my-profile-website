@@ -267,80 +267,44 @@
             color: #FF4444;
         }
 
-        .anime-preview {
-            margin-top: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 15px;
-        }
-
-        .preview-link {
+        .iframe-container {
             position: relative;
-            display: block;
             width: 100%;
-            border-radius: 8px;
+            height: 300px; /* Sesuaikan tinggi yang diinginkan */
             overflow: hidden;
+            border-radius: 8px;
+            margin-top: 10px;
         }
 
-        .preview-link img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .preview-overlay {
+        .iframe-container iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            border: none;
         }
 
-        .preview-overlay span {
-            color: white;
-            padding: 8px 16px;
-            border: 2px solid white;
-            border-radius: 4px;
-            font-size: 0.9em;
+        /* Tambahkan loading placeholder */
+        .iframe-container::before {
+            content: "Loading...";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(255, 255, 255, 0.5);
         }
 
-        .preview-link:hover img {
-            transform: scale(1.05);
-        }
-
-        .preview-link:hover .preview-overlay {
-            opacity: 1;
-        }
-
-        .anime-info-detail {
-            margin-top: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        /* Responsive */
+        /* Responsive styling */
         @media screen and (max-width: 768px) {
-            .preview-link img {
-                height: 150px;
+            .iframe-container {
+                height: 200px;
             }
         }
 
         @media screen and (max-width: 480px) {
-            .preview-link img {
-                height: 120px;
-            }
-            
-            .preview-overlay span {
-                font-size: 0.8em;
-                padding: 6px 12px;
+            .iframe-container {
+                height: 150px;
             }
         }
 
@@ -491,148 +455,84 @@
                         <p>Status: Completed</p>
                     </div>
                     <div class="anime-details">
-                        <div class="anime-preview">
-                            <a href="https://myanimelist.net/anime/54855/Senpai_wa_Otokonoko" target="_blank" class="preview-link">
-                                <img src="https://cdn.myanimelist.net/images/anime/1049/144505.jpg" alt="Senpai wa Otokonoko">
-                                <div class="preview-overlay">
-                                    <span>View on MyAnimeList</span>
-                                </div>
-                            </a>
-                            <div class="anime-info-detail">
-                                <p>Rating: ⭐⭐⭐⭐⭐</p>
-                                <p>Episodes: 12/12</p>
-                                <p>Last Viewed: 30 Sep 2024</p>
-                            </div>
+                        <div class="iframe-container">
+                            <iframe src="https://myanimelist.net/anime/54855/Senpai_wa_Otokonoko" frameborder="0"></iframe>
                         </div>
+                        <p>Rating: ⭐⭐⭐⭐⭐</p>
+                        <p>Episodes Watched: 12/12</p>
+                        <p>Last Viewed Date: 30 Sep 2024</p>
                     </div>
                 </div>
-                    <div class="anime-info">
-                        <h3>Saijaku Tamer wa Gomi Hiroi no Tabi wo Hajimemashita</h3>
-                        <p>Status: Completed</p>
-                    </div>
-                    <div class="anime-details">
-                        <div class="anime-preview">
-                            <a href="https://myanimelist.net/anime/55798/Saijaku_Tamer_wa_Gomi_Hiroi_no_Tabi_wo_Hajimemashita" target="_blank" class="preview-link">
-                                <img src="https://cdn.myanimelist.net/images/anime/1722/139982.jpg" alt="Saijaku Tamer">
-                                <div class="preview-overlay">
-                                    <span>View on MyAnimeList</span>
-                                </div>
-                            </a>
-                            <div class="anime-info-detail">
-                                <p>Rating: ⭐⭐⭐⭐⭐</p>
-                                <p>Episodes Watched: 12/12</p>
-                                <p>Last Viewed Date: 03 May 2024</p>
-                            </div>
+                    <div class="anime-card">
+                        <div class="anime-info">
+                            <h3>Saijaku Tamer wa Gomi Hiroi no Tabi wo Hajimemashita</h3>
+                            <p>Status: Completed</p>
+                        </div>
+                        <div class="anime-details">
+                            <img src="/api/placeholder/400/200" alt="Saijaku Tamer">
+                            <p>Rating: ⭐⭐⭐⭐⭐</p>
+                            <p>Episodes Watched: 12/12</p>
+                            <p>Last Viewed Date: 03 May 2024</p>
                         </div>
                     </div>
-                </div>
-
-                <div class="anime-card">
-                    <div class="anime-info">
-                        <h3>Blue Archive the Animation</h3>
-                        <p>Status: Completed</p>
-                    </div>
-                    <div class="anime-details">
-                        <div class="anime-preview">
-                            <a href="https://myanimelist.net/anime/54789/Blue_Archive_The_Animation" target="_blank" class="preview-link">
-                                <img src="https://cdn.myanimelist.net/images/anime/1522/138764.jpg" alt="Blue Archive">
-                                <div class="preview-overlay">
-                                    <span>View on MyAnimeList</span>
-                                </div>
-                            </a>
-                            <div class="anime-info-detail">
-                                <p>Rating: ⭐⭐⭐⭐⭐</p>
-                                <p>Episodes Watched: 12/12</p>
-                                <p>Last Viewed Date: 25 Jun 2024</p>
-                            </div>
+                    <div class="anime-card">
+                        <div class="anime-info">
+                            <h3>Blue Archive the Animation</h3>
+                            <p>Status: Completed</p>
+                        </div>
+                        <div class="anime-details">
+                            <img src="/api/placeholder/400/200" alt="Blue Archive">
+                            <p>Rating: ⭐⭐⭐⭐⭐</p>
+                            <p>Episodes Watched: 12/12</p>
+                            <p>Last Viewed Date: 25 Jun 2024</p>
                         </div>
                     </div>
-                </div>
-
-                <div class="anime-card">
-                    <div class="anime-info">
-                        <h3>Henjin no Salad Bowl</h3>
-                        <p>Status: Completed</p>
-                    </div>
-                    <div class="anime-details">
-                        <div class="anime-preview">
-                            <a href="https://myanimelist.net/anime/55235/Henjin_no_Salad_Bowl" target="_blank" class="preview-link">
-                                <img src="https://cdn.myanimelist.net/images/anime/1787/138666.jpg" alt="Henjin no Salad Bowl">
-                                <div class="preview-overlay">
-                                    <span>View on MyAnimeList</span>
-                                </div>
-                            </a>
-                            <div class="anime-info-detail">
-                                <p>Rating: ⭐⭐⭐⭐⭐</p>
-                                <p>Episodes Watched: 12/12</p>
-                                <p>Last Viewed Date: 22 Jun 2024</p>
-                            </div>
+                    <div class="anime-card">
+                        <div class="anime-info">
+                            <h3>Henjin no Salad Bowl</h3>
+                            <p>Status: Completed</p>
+                        </div>
+                        <div class="anime-details">
+                            <img src="/api/placeholder/400/200" alt="Henjin Salad Bowl">
+                            <p>Rating: ⭐⭐⭐⭐⭐</p>
+                            <p>Episodes Watched: 12/12</p>
+                            <p>Last Viewed Date: 22 Jun 2024</p>
                         </div>
                     </div>
-                </div>
-
-                <div class="anime-card">
-                    <div class="anime-info">
-                        <h3>Seishun Buta Yarou wa: Bunny Girl Senpai no Yume wo Minai</h3>
-                        <p>Status: Completed</p>
-                    </div>
-                    <div class="anime-details">
-                        <div class="anime-preview">
-                            <a href="https://myanimelist.net/anime/37450/Seishun_Buta_Yarou_wa_Bunny_Girl_Senpai_no_Yume_wo_Minai" target="_blank" class="preview-link">
-                                <img src="https://cdn.myanimelist.net/images/anime/1301/93586.jpg" alt="Bunny Girl Senpai">
-                                <div class="preview-overlay">
-                                    <span>View on MyAnimeList</span>
-                                </div>
-                            </a>
-                            <div class="anime-info-detail">
-                                <p>Rating: ⭐⭐⭐⭐⭐</p>
-                                <p>Episodes Watched: 13/13</p>
-                                <p>Last Viewed Date: 01 Apr 2023</p>
-                            </div>
+                    <div class="anime-card">
+                        <div class="anime-info">
+                            <h3>Seishun Buta Yarou wa: Bunny Girl Senpai no Yume wo Minai</h3>
+                            <p>Status: Completed</p>
+                        </div>
+                        <div class="anime-details">
+                            <img src="/api/placeholder/400/200" alt="Seishun Buta">
+                            <p>Rating: ⭐⭐⭐⭐⭐</p>
+                            <p>Episodes Watched: 13/13</p>
+                            <p>Last Viewed Date: 01 Apr 2023</p>
                         </div>
                     </div>
-                </div>
-
-                <div class="anime-card">
-                    <div class="anime-info">
-                        <h3>Oreimo Season 2</h3>
-                        <p>Status: Completed</p>
-                    </div>
-                    <div class="anime-details">
-                        <div class="anime-preview">
-                            <a href="https://myanimelist.net/anime/13659/Ore_no_Imouto_ga_Konnani_Kawaii_Wake_ga_Nai_" target="_blank" class="preview-link">
-                                <img src="https://cdn.myanimelist.net/images/anime/1542/124450.jpg" alt="Oreimo S2">
-                                <div class="preview-overlay">
-                                    <span>View on MyAnimeList</span>
-                                </div>
-                            </a>
-                            <div class="anime-info-detail">
-                                <p>Rating: ⭐⭐⭐⭐⭐</p>
-                                <p>Episodes Watched: 13/13 Spesial 1,2,3</p>
-                                <p>Last Viewed Date: 26 Oct 2024</p>
-                            </div>
+                    <div class="anime-card">
+                        <div class="anime-info">
+                            <h3>Oreimo Season 2</h3>
+                            <p>Status: Completed</p>
+                        </div>
+                        <div class="anime-details">
+                            <img src="/api/placeholder/400/200" alt="Oreimo S2">
+                            <p>Rating: ⭐⭐⭐⭐⭐</p>
+                            <p>Episodes Watched: 13/13 Spesial 1,2,3</p>
+                            <p>Last Viewed Date: 26 Oct 2024</p>
                         </div>
                     </div>
-                </div>
-
-                <div class="anime-card">
-                    <div class="anime-info">
-                        <h3>Oreimo S1</h3>
-                        <p>Status: Completed</p>
-                    </div>
-                    <div class="anime-details">
-                        <div class="anime-preview">
-                            <a href="https://myanimelist.net/anime/8769/Ore_no_Imouto_ga_Konnani_Kawaii_Wake_ga_Nai" target="_blank" class="preview-link">
-                                <img src="https://cdn.myanimelist.net/images/anime/13/75587.jpg" alt="Oreimo S1">
-                                <div class="preview-overlay">
-                                    <span>View on MyAnimeList</span>
-                                </div>
-                            </a>
-                            <div class="anime-info-detail">
-                                <p>Rating: ⭐⭐⭐⭐⭐</p>
-                                <p>Episodes Watched: 12/12 Spesial 1,2,3,4</p>
-                                <p>Last Viewed Date: 24 Oct 2024</p>
-                            </div>
+                    <div class="anime-card">
+                        <div class="anime-info">
+                            <h3>Oreimo S1</h3>
+                            <p>Status: Completed</p>
+                        </div>
+                        <div class="anime-details">
+                            <img src="/api/placeholder/400/200" alt="Henjin Salad Bowl">
+                            <p>Rating: ⭐⭐⭐⭐⭐</p>
+                            <p>Episodes Watched: 12/12 Spesial 1,2,3,4</p>
+                            <p>Last Viewed Date: 24 Oct 2024</p>
                         </div>
                     </div>
                 </div>
